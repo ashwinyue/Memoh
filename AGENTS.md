@@ -294,3 +294,7 @@ Configuration templates available in `conf/`:
 - `app.docker.toml` — Docker deployment
 - `app.apple.toml` — macOS (Apple Virtualization backend)
 - `app.windows.toml` — Windows
+
+## Web Design
+
+Please refer to `./packages/web/AGENTS.md`.

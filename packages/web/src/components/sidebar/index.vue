@@ -12,7 +12,7 @@
             class="size-6 shrink-0"
             alt="Memoh logo"
           >
-          <span class="text-lg font-bold text-gray-500 dark:text-gray-400 truncate group-data-[collapsible=icon]:hidden">
+          <span class="text-lg font-bold text-muted-foreground truncate group-data-[collapsible=icon]:hidden">
             Memoh
           </span>
         </div>
@@ -54,7 +54,7 @@
                   :src="userInfo.avatarUrl"
                   :alt="displayTitle"
                 />
-                <AvatarFallback class="text-[7px] text-gray-600 dark:text-gray-300">
+                <AvatarFallback class="text-[7px] text-muted-foreground">
                   {{ avatarFallback }}
                 </AvatarFallback>
               </Avatar>
