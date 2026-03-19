@@ -50,7 +50,6 @@ Infrastructure dependencies:
 - **Package Managers**: pnpm (frontend monorepo), Go modules (backend)
 - **Linting**: golangci-lint (Go), ESLint + typescript-eslint + vue-eslint-parser (TypeScript)
 - **Testing**: Vitest
-- **Typo Checker**: typos
 - **Version Management**: bumpp
 - **SDK Generation**: @hey-api/openapi-ts
 
@@ -170,8 +169,7 @@ Memoh/
 ├── bump.config.ts              # Version bumping config (bumpp)
 ├── vitest.config.ts            # Test framework config (Vitest)
 ├── tsconfig.json               # TypeScript monorepo config
-├── eslint.config.mjs           # ESLint config
-└── typos.toml                  # Typo checker config
+└── eslint.config.mjs           # ESLint config
 ```
 
 ## Development Guide

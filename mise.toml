@@ -11,8 +11,6 @@ bun = "latest"
 pnpm = "10"
 # sqlc for sql management
 sqlc = "latest"
-# typos for spell check
-typos = "latest"
 # golangci-lint for Go linting
 "golangci-lint" = "2.10.1"
 
