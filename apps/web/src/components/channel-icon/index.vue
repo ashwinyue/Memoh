@@ -27,6 +27,7 @@ const channelIcons: Record<string, Component> = {
   slack: Slack,
   feishu: Feishu,
   wechat: Wechat,
+  weixin: Wechat,
   matrix: Matrix,
 }
 

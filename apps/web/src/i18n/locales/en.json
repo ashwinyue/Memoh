@@ -892,12 +892,24 @@
       "feishuWebhookSecurityHint": "For security, webhook mode requires either an Encrypt Key or a Verification Token; an unprotected public callback URL should not be exposed.",
       "feishuWebhookSecretRequired": "For security, configure at least one of Encrypt Key or Verification Token.",
       "noAvailableTypes": "All platform types have been configured",
+      "weixinQr": {
+        "title": "QR Code Login",
+        "description": "Scan the QR code with WeChat to connect your account.",
+        "startScan": "Get QR Code",
+        "waitingScan": "Open WeChat and scan this QR code",
+        "scanned": "Scanned — confirm on your phone",
+        "expired": "QR code expired",
+        "refresh": "Refresh QR Code",
+        "success": "WeChat connected successfully!",
+        "retry": "Try Again"
+      },
       "types": {
         "feishu": "Feishu",
         "discord": "Discord",
         "qq": "QQ",
         "matrix": "Matrix",
         "telegram": "Telegram",
+        "weixin": "WeChat",
         "web": "Web",
         "local": "Local"
       },
@@ -907,6 +919,7 @@
         "qq": "QQ",
         "matrix": "MX",
         "telegram": "TG",
+        "weixin": "WX",
         "web": "Web",
         "local": "CLI"
       }

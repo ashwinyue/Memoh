@@ -86,7 +86,16 @@
       </p>
     </div>
 
-    <Separator />
+    <!-- WeChat QR Login -->
+    <div v-if="channelItem.meta.type === 'weixin'">
+      <WeixinQrLogin
+        :bot-id="botId"
+        @login-success="handleWeixinLoginSuccess"
+      />
+      <Separator class="mt-4" />
+    </div>
+
+    <Separator v-else />
 
     <!-- Credentials form (dynamic from config_schema) -->
     <div class="space-y-4">
@@ -259,6 +268,7 @@ import type { HandlersChannelMeta, ChannelChannelConfig, ChannelFieldSchema, Cha
 import { client } from '@memoh/sdk/client'
 import ConfirmPopover from '@/components/confirm-popover/index.vue'
 import ChannelIcon from '@/components/channel-icon/index.vue'
+import WeixinQrLogin from './weixin-qr-login.vue'
 
 interface BotChannelItem {
   meta: HandlersChannelMeta
@@ -569,6 +579,11 @@ function resolveWebhookCallbackBaseUrl(): string {
 
 function isAbsoluteHttpUrl(value: string): boolean {
   return /^https?:\/\//i.test(value)
+}
+
+function handleWeixinLoginSuccess() {
+  queryCache.invalidateQueries({ key: ['bot-channels', botIdRef.value] })
+  emit('saved')
 }
 
 async function copyWebhookCallback() {

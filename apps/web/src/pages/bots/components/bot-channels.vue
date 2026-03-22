@@ -39,7 +39,7 @@
             :aria-pressed="selectedType === item.meta.type"
             class="flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-sm transition-colors hover:bg-accent"
             :class="{ 'bg-accent': selectedType === item.meta.type }"
-            @click="selectedType = item.meta.type as string"
+            @click="selectedType = item.meta.type ?? ''"
           >
             <span class="flex size-8 shrink-0 items-center justify-center rounded-full bg-muted text-muted-foreground">
               <ChannelIcon :channel="item.meta.type as string" size="1.25em" />
@@ -98,7 +98,7 @@
               :key="item.meta.type"
               type="button"
               class="flex w-full items-center gap-3 rounded-md px-3 py-2 text-sm hover:bg-accent transition-colors"
-              @click="addChannel(item.meta.type)"
+              @click="addChannel(item.meta.type ?? '')"
             >
               <span class="flex size-7 shrink-0 items-center justify-center rounded-full bg-muted text-muted-foreground">
                 <ChannelIcon :channel="item.meta.type" size="1em" />
@@ -168,7 +168,7 @@ const { data: channels, isLoading, refetch } = useQuery({
       configurableTypes.map(async (meta) => {
         try {
           const { data: config } = await getBotsByIdChannelByPlatform({
-            path: { id: botIdRef.value, platform: meta.type },
+            path: { id: botIdRef.value, platform: meta.type ?? '' },
             throwOnError: true,
           })
           return { meta, config: config ?? null, configured: true } as BotChannelItem
@@ -194,10 +194,10 @@ const selectedItem = computed(() =>
   allChannels.value.find((c) => c.meta.type === selectedType.value) ?? null,
 )
 
-watch(allChannels, (list) => {
-  if (list.length === 0) {
-    selectedType.value = null
-    return
+watch(configuredChannels, (list) => {
+  const first = list[0]
+  if (first && !selectedType.value) {
+    selectedType.value = first.meta.type ?? null
   }
 
   const current = selectedType.value
@@ -213,5 +213,4 @@ function addChannel(type: string) {
   addPopoverOpen.value = false
   selectedType.value = type
 }
-
 </script>
