@@ -117,7 +117,7 @@ import { storeToRefs } from 'pinia'
 import { useI18n } from 'vue-i18n'
 import { useChatStore } from '@/store/chat-list'
 import type { SessionSummary } from '@/composables/api/useChat'
-import { Avatar, AvatarImage, AvatarFallback } from '@memoh/ui'
+import { Avatar, AvatarImage, AvatarFallback } from '@memohai/ui'
 import ChannelBadge from '@/components/chat-list/channel-badge/index.vue'
 import {
   Toggle,
@@ -128,7 +128,7 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
-} from '@memoh/ui'
+} from '@memohai/ui'
 
 const { t } = useI18n()
 const chatStore = useChatStore()

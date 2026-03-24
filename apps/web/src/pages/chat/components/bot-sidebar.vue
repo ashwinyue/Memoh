@@ -54,10 +54,10 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { Avatar, AvatarImage, AvatarFallback } from '@memoh/ui'
+import { Avatar, AvatarImage, AvatarFallback } from '@memohai/ui'
 import { useQuery } from '@pinia/colada'
-import { getBotsQuery } from '@memoh/sdk/colada'
-import type { BotsBot } from '@memoh/sdk'
+import { getBotsQuery } from '@memohai/sdk/colada'
+import type { BotsBot } from '@memohai/sdk'
 import { useChatStore } from '@/store/chat-list'
 import { storeToRefs } from 'pinia'
 import {
@@ -65,7 +65,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
- } from '@memoh/ui'
+ } from '@memohai/ui'
 
 const chatStore = useChatStore()
 const { currentBotId } = storeToRefs(chatStore)
