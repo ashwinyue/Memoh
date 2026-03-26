@@ -60,12 +60,18 @@ func (s *Service) Test(ctx context.Context, id string) (TestResponse, error) {
 			Message:   providerResult.Message,
 		}, nil
 	case sdk.ProviderStatusUnhealthy:
-		return TestResponse{
-			Status:    TestStatusAuthError,
-			Reachable: true,
-			LatencyMs: time.Since(start).Milliseconds(),
-			Message:   providerResult.Message,
-		}, nil
+		// Some providers (e.g., MiniMax's Anthropic-compatible API) don't
+		// support the /models endpoint, but still work for chat requests.
+		// Continue to TestModel to verify actual API availability.
+		if !strings.Contains(providerResult.Message, "404") {
+			return TestResponse{
+				Status:    TestStatusAuthError,
+				Reachable: true,
+				LatencyMs: time.Since(start).Milliseconds(),
+				Message:   providerResult.Message,
+			}, nil
+		}
+		// Fall through to TestModel for 404 errors from /models endpoint
 	}
 
 	modelResult, err := sdkProvider.TestModel(ctx, model.ModelID)
